@@ -7,10 +7,9 @@ hexpand=1 # vertical expansion
 
 if [[ $1 == "help" || $1 == "--help" || $1 == "-h" ]]
 then
-	echo "
-hyprscreenshot is bash script for making shots of window or workspace and save it to clipboard. 
-keyboard shortcuts are not added by the script.
+	echo "hyprscreenshot is bash script for making shots of window or workspace and save it to clipboard. Keyboard shortcuts are not added by the script.
 Usage: hyprscreenshot [OPTION]
+
 Options:
 	-h, --help, help - to see this page.
 	window - to save shot of active window to clipboard.
