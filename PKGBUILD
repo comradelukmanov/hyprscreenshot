@@ -2,14 +2,14 @@
 pkgname=hyprscreenshot
 pkgver=1.0
 pkgrel=1
-pkgdesc="Simple screenshots script for Hyprland."
-url="https://github.com/comradelukmanov/hyprscreenshot/releases/edit/untagged-ed834c8ce3bda7d8c233"
+pkgdesc="Simple screenshot bash script for Hyprland."
+url="https://github.com/comradelukmanov/hyprscreenshot"
 packager="Lukmanov Lukman <comradelukmanov@gmail.com>"
 license=(nah)
 arch=("any")
-depends=("jq" "hyprland" "grim" "wl-clipboard")
+depends=("hyprland" "jq" "grim" "wl-clipboard")
 source=("${pkgname}")
-sha256sums=("74b67cbe7148389de5e5ae0f7d25c6e6072af90f5d1c4c7bd3c8cc4c8358a777")
+sha256sums=("da4590035fbe41a9539bc3b477811167097347a4b72fe519d518fa5ca1342f11")
 
 package() {
 	mkdir -p "${pkgdir}/usr/local/bin"
