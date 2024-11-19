@@ -1,0 +1,6 @@
+hyprscreenshot is bash script for making shots of window or workspace and save it to clipboard.
+Usage: hyprscreenshot [OPTION]
+Arguments:
+	-h, --help, help - to see this page.
+	window - to save shot of active window to clipboard.
+	workspace - to save shot of active workspace to clipboard.

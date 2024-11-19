@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Variables of expand of window screenshot field. 
+# Do not use values greater then border width or margin of windows in your hyprland config.
+wexpand=1 # horizontal expansion
+hexpand=1 # vertical expansion
+
+if [[ $1 == "help" || $1 == "--help" || $1 == "-h" ]]
+then
+	echo "
+hyprscreenshot is bash script for making shots of window or workspace and save it to clipboard. 
+keyboard shortcuts are not added by the script.
+Usage: hyprscreenshot [OPTION]
+Options:
+	-h, --help, help - to see this page.
+	window - to save shot of active window to clipboard.
+	workspace - to save shot of active workspace to clipboard.
+"
+elif [[ $1 == "workspace" ]]
+then
+	w=$(hyprctl monitors -j | jq '.[] | ."width"')
+	h=$(hyprctl monitors -j | jq '.[] | ."height"')
+	geom="0,0 ${w}x${h}"
+	grim -g "${geom}" - | wl-copy
+elif [[ $1 == "window" ]]
+then
+	x=$(hyprctl activewindow -j | jq '."at" | .[0]')
+	y=$(hyprctl activewindow -j | jq '."at" | .[1]')
+	w=$(hyprctl activewindow -j | jq '."size" | .[0]')
+	h=$(hyprctl activewindow -j | jq '."size" | .[1]')
+	let x=$(( x - wexpand ))
+	let y=$(( y - hexpand ))
+	let w=$(( w + wexpand * 2 ))
+	let h=$(( h + hexpand * 2 ))
+	geom="${x},${y} ${w}x${h}"
+	grim -g "${geom}" - | wl-copy
+else
+	echo "Invalid argument. Use 'hyprscreenshot --help' to see help page."
+fi
